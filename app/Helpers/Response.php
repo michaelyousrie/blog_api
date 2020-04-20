@@ -9,12 +9,12 @@ class Response
         return self::response(true, $data);
     }
 
-    public static function failure($data = [], $errors = [])
+    public static function failure($errors = [], $data = [])
     {
-        return self::response(false, $data, $errors);
+        return self::response(false, $data, $errors, 422);
     }
 
-    private static function response(bool $success, $data = [], $errors = [])
+    private static function response(bool $success, $data = [], $errors = [], $statusCode = 200)
     {
         $response_array = [
             'success'   => $success,
@@ -25,6 +25,6 @@ class Response
             $response_array = array_merge($response_array, ['errors' => $errors]);
         }
 
-        return $response_array;
+        return response()->json($response_array, $statusCode);
     }
 }

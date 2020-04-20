@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "500689a6-f5ef-4636-b5bb-ff9cb9653bfb",
+		"name": "Blog Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6c709b58-11fb-4b5c-9f3e-5daf1d8d94df",
+						"exec": [
+							"pm.environment.set(\"TOKEN\", pm.response.json().data.api_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Michael Yousrie\",\n\t\"username\": \"mike\",\n\t\"email\": \"michaelyousrie@gmail.com\",\n\t\"password\": \"testing1234\"\n}"
+				},
+				"url": {
+					"raw": "blog_api.test/api/register",
+					"host": [
+						"blog_api",
+						"test"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
