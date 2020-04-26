@@ -136,6 +136,45 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Create Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{TOKEN}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"This is just a title for a post.\",\n\t\"body\": \"This is just a random body text for the post. it's awesome if this actually works.. oh wait, it does work :D\"\n}"
+				},
+				"url": {
+					"raw": "blog_api.test/api/posts",
+					"host": [
+						"blog_api",
+						"test"
+					],
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
