@@ -22,4 +22,11 @@ class PostsController extends Controller
             new PostResource($post)
         );
     }
+
+    public function show(Post $post)
+    {
+        return Response::success(
+            new PostResource($post)
+        );
+    }
 }

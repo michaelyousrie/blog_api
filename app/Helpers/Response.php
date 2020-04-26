@@ -9,9 +9,9 @@ class Response
         return self::response(true, $data);
     }
 
-    public static function failure($errors = [], $data = [])
+    public static function failure($errors = [], $data = [], int $code = 422)
     {
-        return self::response(false, $data, $errors, 422);
+        return self::response(false, $data, $errors, $code);
     }
 
     private static function response(bool $success, $data = [], $errors = [], $statusCode = 200)

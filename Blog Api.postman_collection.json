@@ -6,101 +6,188 @@
 	},
 	"item": [
 		{
-			"name": "Register",
-			"event": [
+			"name": "Auth",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"id": "6c709b58-11fb-4b5c-9f3e-5daf1d8d94df",
-						"exec": [
-							"pm.environment.set(\"TOKEN\", pm.response.json().data.api_token);"
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6c709b58-11fb-4b5c-9f3e-5daf1d8d94df",
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().data.api_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
 						],
-						"type": "text/javascript"
-					}
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Michael Yousrie\",\n\t\"username\": \"mike\",\n\t\"email\": \"michaelyousrie@gmail.com\",\n\t\"password\": \"testing1234\"\n}"
+						},
+						"url": {
+							"raw": "blog_api.test/api/register",
+							"host": [
+								"blog_api",
+								"test"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9944d191-6a34-4f9f-88d7-d6a9c7422bc2",
+								"exec": [
+									"pm.environment.set(\"TOKEN\", pm.response.json().data.api_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"michaelyousrie@gmail.com\",\n\t\"password\": \"testing1234\"\n}"
+						},
+						"url": {
+							"raw": "blog_api.test/api/login",
+							"host": [
+								"blog_api",
+								"test"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
 				}
 			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Michael Yousrie\",\n\t\"username\": \"mike\",\n\t\"email\": \"michaelyousrie@gmail.com\",\n\t\"password\": \"testing1234\"\n}"
-				},
-				"url": {
-					"raw": "blog_api.test/api/register",
-					"host": [
-						"blog_api",
-						"test"
-					],
-					"path": [
-						"api",
-						"register"
-					]
-				}
-			},
-			"response": []
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Login",
-			"event": [
+			"name": "Posts",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"id": "9944d191-6a34-4f9f-88d7-d6a9c7422bc2",
-						"exec": [
-							"pm.environment.set(\"TOKEN\", pm.response.json().data.api_token);"
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
 						],
-						"type": "text/javascript"
-					}
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"This is just a title for a post.\",\n\t\"body\": \"This is just a random body text for the post. it's awesome if this actually works.. oh wait, it does work :D\"\n}"
+						},
+						"url": {
+							"raw": "blog_api.test/api/posts",
+							"host": [
+								"blog_api",
+								"test"
+							],
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "blog_api.test/api/posts/1",
+							"host": [
+								"blog_api",
+								"test"
+							],
+							"path": [
+								"api",
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{TOKEN}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"email\": \"michaelyousrie@gmail.com\",\n\t\"password\": \"testing1234\"\n}"
-				},
-				"url": {
-					"raw": "blog_api.test/api/login",
-					"host": [
-						"blog_api",
-						"test"
-					],
-					"path": [
-						"api",
-						"login"
-					]
-				}
-			},
-			"response": []
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Get User",
@@ -132,45 +219,6 @@
 					"path": [
 						"api",
 						"user"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Post",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{TOKEN}}",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"title\": \"This is just a title for a post.\",\n\t\"body\": \"This is just a random body text for the post. it's awesome if this actually works.. oh wait, it does work :D\"\n}"
-				},
-				"url": {
-					"raw": "blog_api.test/api/posts",
-					"host": [
-						"blog_api",
-						"test"
-					],
-					"path": [
-						"api",
-						"posts"
 					]
 				}
 			},
