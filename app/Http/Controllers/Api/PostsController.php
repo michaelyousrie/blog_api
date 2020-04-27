@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Response;
 use App\Post;
+use App\Helpers\Response;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreatePostRequest;
 use App\Http\Resources\PostResource;
+use App\Http\Requests\CreatePostRequest;
 
 class PostsController extends Controller
 {
@@ -28,5 +28,12 @@ class PostsController extends Controller
         return Response::success(
             new PostResource($post)
         );
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return Response::success();
     }
 }

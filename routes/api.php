@@ -11,4 +11,8 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::post('/posts', 'Api\PostsController@store');
     Route::get('/posts/{post}', 'Api\PostsController@show');
+
+    Route::group(['middleware' => 'MustOwn:post'], function () {
+        Route::delete('/posts/{post}', 'Api\PostsController@destroy');
+    });
 });
