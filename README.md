@@ -34,6 +34,7 @@ To create such a variable, you have to create an envrionment in postman and then
 # Contact
 Feel free to contact me if you have any questions, concerns or to report a bug.
 
-<a href="mailto:michaelyousrie@gmail.com">My Email</a>
+1. <a href="mailto:michaelyousrie@gmail.com">My Email</a>
+2. Phone Number (including whatsapp): +201147020291
 
 ## That's it :)
