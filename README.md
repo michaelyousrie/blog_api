@@ -23,4 +23,9 @@ To create such a variable, you have to create an envrionment in postman and then
 
 2. You're free to use this how you see fit but please drop some credits my way if you do :)
 
-# That's it..
+# Contact
+Feel free to contact me if you have any questions, concerns or to report a bug.
+
+<a href="mailto:michaelyousrie@gmail.com">My Email</a>
+
+## That's it :)
