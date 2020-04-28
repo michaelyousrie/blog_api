@@ -29,4 +29,15 @@ Route::group(['middleware' => 'auth:api'], function () {
         });
     });
     // ========= /COMMENTS ROUTES =========
+
+    // ========= LIKES ROUTES =========
+    Route::group(['prefix'  => '/likes'], function () {
+        Route::post('/post/{post}', 'Api\LikesController@likePost');
+        Route::post('/comment/{comment}', 'Api\LikesController@likeComment');
+
+        Route::group(['middleware' => 'MustOwn:like'], function () {
+            Route::delete('/{like}', 'Api\LikesController@destroy');
+        });
+    });
+    // ========= /LIKES ROUTES =========
 });

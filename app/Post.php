@@ -2,10 +2,13 @@
 
 namespace App;
 
+use App\Traits\Likeable;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    use Likeable;
+
     protected $fillable = [
         'user_id', 'title', 'body'
     ];

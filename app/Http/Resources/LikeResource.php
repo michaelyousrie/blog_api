@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use App\Helpers\Generals;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PostResource extends JsonResource
+class LikeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,11 +17,7 @@ class PostResource extends JsonResource
     {
         return [
             'id'                    => $this->id,
-            'author'                => new UserResource($this->author),
-            'title'                 => $this->title,
-            'body'                  => $this->body,
-            'comments'              => CommentResource::collection($this->comments),
-            'likes'                 => LikeResource::collection($this->likes),
+            'user'                  => new UserResource($this->user),
             'created_at'            => $this->created_at->format(Generals::dateTimeFormat()),
             'friendly_created_at'   => $this->created_at->diffForHumans()
         ];

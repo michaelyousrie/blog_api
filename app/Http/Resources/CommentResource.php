@@ -20,6 +20,7 @@ class CommentResource extends JsonResource
             'user'                  => new UserResource($this->user),
             'text'                  => $this->text,
             // 'post'               => new PostResource($this->post),
+            'likes'                 => LikeResource::collection($this->likes),
             'created_at'            => $this->created_at->format(Generals::dateTimeFormat()),
             'friendly_created_at'   => $this->created_at->diffForHumans()
         ];
