@@ -23,4 +23,11 @@ class CommentsController extends Controller
             new CommentResource($comment)
         );
     }
+
+    public function destroy(Comment $comment)
+    {
+        $comment->delete();
+
+        return Response::success();
+    }
 }

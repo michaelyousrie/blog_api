@@ -23,6 +23,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     // ========= COMMENTS ROUTES =========
     Route::group(['prefix'  => '/comments'], function () {
         Route::post('/post/{post}', 'Api\CommentsController@store');
+
+        Route::group(['middleware' => 'MustOwn:comment'], function () {
+            Route::delete('/{comment}', 'Api\CommentsController@destroy');
+        });
     });
     // ========= /COMMENTS ROUTES =========
 });
