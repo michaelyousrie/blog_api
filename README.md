@@ -1,5 +1,13 @@
 # What is this?
-This is an API made for an imaginary blog post to showcase my ability to create an API from scratch for a system with Laravel.
+This is an API made for an imaginary blog to showcase my ability to create an API from scratch for a system with Laravel.
+
+# Features
+1. Authentication (Login/Register).
+2. Create, fetch and delete posts.
+3. Create and delete comments on posts.
+4. Add likes to posts and comments (using polymorphic relationship in Laravel. that part is so cool).
+5. Unlike (delete likes).
+6. More features will be added including unit tests...
 
 # How to run it?
 Just like any application, you need a server and a database. Assuming you already got that covered, Follow these steps:
